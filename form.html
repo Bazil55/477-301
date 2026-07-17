@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page - 477-301</title>
+</head>
+<body> 
+
+    <!-- 1. Semantic Layout: Header (ส่วนหัวของเพจ) -->
+    <header>
+        <h1>PSU Student Portal</h1>
+    </header>
+
+    <!-- 2. Semantic Layout: Nav (เมนูนำทาง) -->
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Register</a></li>
+        </ul>
+    </nav>
+
+    <!-- 3. Semantic Layout: Main (เนื้อหาหลักของหน้าเว็บ) -->
+    <main>
+        <h2>Student Registration Form</h2>
+        
+        <!-- กำหนด action และ method ให้ถูกต้องตามสไลด์ตัวอย่าง -->
+        <form action="signup.php" method="post">
+            
+            <!-- ส่วนที่ 1: ข้อมูลบัญชีผู้ใช้ -->
+            <fieldset>
+                <legend>Account Information</legend>
+                
+                <label for="txtUsername">Username:</label> 
+                <input type="text" id="txtUsername" name="txtUsername" placeholder="ชื่อผู้ใช้" required><br><br>
+
+                <label for="txtPassword">Password:</label>
+                <input type="password" id="txtPassword" name="txtPassword" placeholder="รหัสผ่าน" required><br><br>
+            </fieldset>
+            
+            <br>
+
+            <!-- ส่วนที่ 2: ข้อมูลส่วนตัวและการติดต่อ -->
+            <fieldset>
+                <legend>Personal & Contact Details</legend>
+
+                <label for="txtName">Name:</label>
+                <input type="text" id="txtName" name="txtName" placeholder="ชื่อ-นามสกุล" required><br><br>
+
+                <!-- เพิ่ม Validation: ล็อกสตาฟ/นักศึกษาเมล PSU เท่านั้นด้วย pattern ตามสไลด์หน้า 2 -->
+                <label for="txtEmail">Email:</label>
+                <input type="email" id="txtEmail" name="txtEmail" placeholder="อีเมล @psu.ac.th" pattern="[A-Za-z0-9._%+-]+@psu\.ac\.th" title="กรุณาใช้ PSU Email เท่านั้น" required><br><br>
+
+                <!-- เพิ่ม Validation: ล็อกเบอร์โทรไทย 10 หลัก ขึ้นต้นด้วย 06, 08, 09 ด้วย pattern ตามสไลด์หน้า 2 -->
+                <label for="txtTel">Tel:</label>
+                <input type="tel" id="txtTel" name="txtTel" placeholder="เบอร์โทรศัพท์ 10 หลัก" pattern="0[689][0-9]{8}" title="เบอร์โทรศัพท์มือถือ 10 หลัก ขึ้นต้นด้วย 0" required><br><br>
+
+                <label for="txtDate">Date of Birth:</label>
+                <!-- เพิ่ม Validation: กำหนดช่วงอายุด้วย min/max -->
+                <input type="date" id="txtDate" name="txtDate" min="1980-01-01" max="2010-12-31" required> <br><br>
+
+                <label for="txtTime">Preferred Time:</label>
+                <input type="time" id="txtTime" name="txtTime" required><br><br>
+
+                <label for="txtColor">Theme Color:</label>
+                <input type="color" id="txtColor" name="txtColor" value="#ffaa00" required><br><br>
+                
+                <input type="hidden" id="txtHidden" name="txtHidden" value="Hidden Value">
+            </fieldset>
+
+            <br>
+
+            <!-- ส่วนที่ 3: ตัวเลือกและข้อมูลเพิ่มเติม (ตามเกณฑ์ <fieldset> + <legend>) -->
+            <fieldset>
+                <legend>Preferences & Meal Selections</legend>
+
+                <!-- Checkbox (แก้ไข id ไม่ให้ซ้ำกันเพื่อ Accessibility และนำ required ออก) -->
+                <p>Select Meals You Want (Optional):</p>
+                <label><input type="checkbox" id="chkMeal1" name="chkMeal[]" value="Breakfast"> Breakfast</label>
+                <label><input type="checkbox" id="chkMeal2" name="chkMeal[]" value="Lunch"> Lunch</label>
+                <label><input type="checkbox" id="chkMeal3" name="chkMeal[]" value="Dinner"> Dinner</label>
+                <br><br>
+
+                <!-- Radio Options (แก้ไข id ไม่ให้ซ้ำกัน และใช้ name ร่วมกันเพื่อให้เลือกได้แค่อันเดียว) -->
+                <p>Primary Meal Selection (Required):</p> 
+                <label><input type="radio" id="rdoMeal1" name="Rdomeal" value="Breakfast" required> Breakfast</label>
+                <label><input type="radio" id="rdoMeal2" name="Rdomeal" value="Lunch"> Lunch</label>
+                <label><input type="radio" id="rdoMeal3" name="Rdomeal" value="Dinner"> Dinner</label>
+                <br><br>
+
+                <label for="SelMeal">Dropdown Selection:</label>
+                <select name="SelMeal" id="SelMeal" required>
+                    <option value="">Select Meal</option>
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                </select><br><br>
+
+                <label for="txtFile">Upload Document:</label>
+                <input type="file" id="txtFile" name="txtFile" required><br><br>
+
+                <label for="txtTextarea">Additional Message:</label><br>
+                <textarea id="txtTextarea" name="txtTextarea" rows="6" cols="50" placeholder="ข้อความเพิ่มเติม..." required></textarea><br><br>
+            </fieldset>
+
+            <br>
+
+            <!-- ส่วนปุ่มกดส่งฟอร์ม -->
+            <input type="submit" value="Submit">
+            <input type="reset" value="Cancel">
+        </form>
+    </main>
+
+    <!-- 4. Semantic Layout: Footer (ส่วนท้ายของเพจ) -->
+    <footer>
+        <p>&copy; 2026 Faculty of Management Sciences, Prince of Songkla University</p>
+    </footer>
+
+</body>
+</html>
